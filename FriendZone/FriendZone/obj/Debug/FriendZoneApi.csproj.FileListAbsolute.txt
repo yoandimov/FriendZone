@@ -71,12 +71,9 @@ C:\Users\heris\Documents\FriendZone\FriendZone\bin\EntityFramework.dll
 C:\Users\heris\Documents\FriendZone\FriendZone\bin\EntityFramework.SqlServer.dll
 C:\Users\heris\Documents\FriendZone\FriendZone\bin\EntityFramework.xml
 C:\Users\heris\Documents\FriendZone\FriendZone\bin\EntityFramework.SqlServer.xml
-<<<<<<< Updated upstream
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\obj\Debug\FriendZoneApi.csprojAssemblyReference.cache
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\obj\Debug\FriendZone.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\obj\Debug\FriendZone.pdb
-=======
->>>>>>> Stashed changes
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\FriendZone.dll.config
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\FriendZone.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\FriendZone.pdb
@@ -131,20 +128,14 @@ C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\roslyn\VBCS
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\EntityFramework.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\EntityFramework.SqlServer.dll
-<<<<<<< Updated upstream
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\FriendZoneData.dll
-=======
->>>>>>> Stashed changes
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\Newtonsoft.Json.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\System.Net.Http.Formatting.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\System.Web.Http.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\System.Web.Http.WebHost.dll
-<<<<<<< Updated upstream
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\FriendZoneData.pdb
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\FriendZoneData.dll.config
-=======
->>>>>>> Stashed changes
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\EntityFramework.xml
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\EntityFramework.SqlServer.xml
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\Newtonsoft.Json.xml
@@ -155,11 +146,8 @@ C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\Microsoft.C
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\fr\System.Net.Http.Formatting.resources.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\fr\System.Web.Http.resources.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\bin\fr\System.Web.Http.WebHost.resources.dll
-<<<<<<< Updated upstream
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\obj\Debug\FriendZoneApi.csproj.CopyComplete
-=======
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\obj\Debug\FriendZoneApi.csprojAssemblyReference.cache
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\obj\Debug\FriendZoneApi.csproj.CopyComplete
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\obj\Debug\FriendZone.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZone\obj\Debug\FriendZone.pdb
->>>>>>> Stashed changes
