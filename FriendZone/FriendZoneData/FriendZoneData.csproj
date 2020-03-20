@@ -52,13 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Student.cs" />
-    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FriendZoneDBContext.cs" />
     <Compile Include="Services\IStudentData.cs" />
-    <Compile Include="Services\IUserData.cs" />
     <Compile Include="Services\SqlStudentData.cs" />
-    <Compile Include="Services\SqlUserData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

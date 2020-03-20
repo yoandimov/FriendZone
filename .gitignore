@@ -82,3 +82,5 @@ FriendZone/.vs/FriendZone/v16/.suo
 *.ide
 FriendZone/.vs/FriendZone/v16/Server/sqlite3/storage.ide
 *.lock
+*.cache
+*.cache
