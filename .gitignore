@@ -1,4 +1,4 @@
-###################
+﻿###################
 # compiled source #
 ###################
 *.com
@@ -84,3 +84,9 @@ FriendZone/.vs/FriendZone/v16/Server/sqlite3/storage.ide
 *.lock
 *.cache
 *.cache
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+
