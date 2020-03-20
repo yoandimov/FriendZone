@@ -75,3 +75,10 @@ _[Ss]cripts
 *.dot[Cc]over
 FriendZone/.vs/FriendZone/v16/.suo
 FriendZone/.vs/FriendZone/v16/.suo
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
+*.ide
+FriendZone/.vs/FriendZone/v16/Server/sqlite3/storage.ide
+*.lock
