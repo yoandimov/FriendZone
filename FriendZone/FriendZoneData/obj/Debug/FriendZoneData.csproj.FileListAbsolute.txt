@@ -5,7 +5,7 @@ C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\bin\Debug\E
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\bin\Debug\EntityFramework.xml
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.csprojAssemblyReference.cache
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.csproj.CopyComplete
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.pdb
+C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.csprojAssemblyReference.cache

@@ -33,8 +33,6 @@ namespace FriendZoneData.Model
         public string profile_picture_url { get; set; }
 
         public string description { get; set; }
-
-
         
     }
 }

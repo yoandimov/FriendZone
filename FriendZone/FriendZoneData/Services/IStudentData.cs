@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace FriendZoneData.Services
 {
-    public interface IUserData
+    public interface IStudentData
     {
+        IEnumerable<Student> GetAll();
+        Student Get(int id);
 
-        IEnumerable<User> GetAll();
-        User Get(int id);
-
-        void Add(User u);
-        bool Update(User u);
+        void Add(Student u);
+        bool Update(Student u);
 
         bool Delete(int id);
     }
