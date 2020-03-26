@@ -15,10 +15,10 @@ namespace FriendZoneWeb.Controllers
     {
         //BaseApiUrl Pour faire le call
         readonly string apiBaseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
-        readonly HttpClientHandler<Student> h;
+        readonly HttpClientHandler<User> h;
         public HomeController()
         {
-           h = new HttpClientHandler<Student>();
+           h = new HttpClientHandler<User>();
         }
         
         public ActionResult Index()
@@ -40,7 +40,7 @@ namespace FriendZoneWeb.Controllers
             try
             {
                 string url = $"{apiBaseUrl}user/getStudents";
-                IEnumerable<Student> model = await h.GetAllRequest(url);
+                IEnumerable<User> model = await h.GetAllRequest(url);
                 return View(model);
             }
             catch (HttpRequestException e)

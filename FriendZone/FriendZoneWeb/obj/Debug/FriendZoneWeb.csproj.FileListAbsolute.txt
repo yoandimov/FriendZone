@@ -176,3 +176,6 @@ C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneWeb\obj\Debug\Fr
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneWeb\obj\Debug\FriendZoneWeb.csproj.CopyComplete
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneWeb\obj\Debug\FriendZoneWeb.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneWeb\obj\Debug\FriendZoneWeb.pdb
+C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneWeb\bin\FriendZoneData.dll
+C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneWeb\bin\FriendZoneData.pdb
+C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneWeb\bin\FriendZoneData.dll.config

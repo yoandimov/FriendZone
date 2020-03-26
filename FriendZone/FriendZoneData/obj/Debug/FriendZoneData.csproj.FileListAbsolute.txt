@@ -8,4 +8,5 @@ C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\bin\Debug\E
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.csproj.CopyComplete
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.dll
 C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.pdb
-C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\obj\Debug\FriendZoneData.csprojAssemblyReference.cache
+C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\bin\Debug\Newtonsoft.Json.dll
+C:\Users\heris\Documents\GitHub\FriendZone\FriendZone\FriendZoneData\bin\Debug\Newtonsoft.Json.xml
