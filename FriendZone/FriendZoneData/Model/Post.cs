@@ -16,13 +16,13 @@ namespace FriendZoneData.Model
 
         [Key]
         [Column("post_id")]
-        public int postId { get; set; }
+        public int PostId { get; set; }
 
         [Column("user_id")]
-        public int userId { get; set; }
+        public int UserId { get; set; }
 
         [Column("post_url")]
-        public string postUrl { get; set; }
+        public string PostUrl { get; set; }
 
         [Column("caption")]
         public string Caption { get; set; }

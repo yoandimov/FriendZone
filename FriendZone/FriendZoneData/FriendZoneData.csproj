@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Like.cs" />
     <Compile Include="Model\Commentaire.cs" />
     <Compile Include="Model\Post.cs" />
     <Compile Include="Model\User.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Services\InterfaceData\IPostData.cs" />
     <Compile Include="Services\InterfaceData\ICommentaire.cs" />
     <Compile Include="Services\InterfaceData\IUserData.cs" />
+    <Compile Include="Services\SqlData\PostData.cs" />
     <Compile Include="Services\SqlData\CommentaireData.cs" />
     <Compile Include="Services\SqlData\UserData.cs" />
   </ItemGroup>
