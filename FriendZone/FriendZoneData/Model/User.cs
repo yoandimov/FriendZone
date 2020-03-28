@@ -14,7 +14,8 @@ namespace FriendZoneData.Model
     public class User
     {
         [Key]
-        public int user_id { get; set; }
+        [Column("user_id")]
+        public int userId { get; set; }
 
         [Column("first_name")]
         public String LirstName { get; set; }

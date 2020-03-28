@@ -31,7 +31,7 @@ namespace FriendZone.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Post> GetPost(int id)
+        public IEnumerable<Post> GetUserPost(int id)
         {
             return source.GetPostByUser(id);
         }

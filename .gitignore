@@ -87,6 +87,6 @@ FriendZone/.vs/FriendZone/v16/Server/sqlite3/storage.ide
 *.suo
 *.user
 _ReSharper.*
-bin
-obj
+bin/*
+obj/*
 

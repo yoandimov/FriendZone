@@ -20,7 +20,6 @@ namespace FriendZoneData.Model
 
         [Column("user_id")]
         public int UserId { get; set; }
-        
 
         [Column("post_url")]
         public string PostUrl { get; set; }
