@@ -45,12 +45,6 @@ create table [dbo].[like] (
 );
 
 
-
-
-
-
-
-
 ALTER TABLE  [commentaire] NOCHECK CONSTRAINT ALL
 ALTER TABLE  [like] NOCHECK CONSTRAINT ALL
 ALTER TABLE  [post] NOCHECK CONSTRAINT ALL

@@ -54,12 +54,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Commentaire.cs" />
     <Compile Include="Model\Post.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FriendZoneDBContext.cs" />
     <Compile Include="Services\InterfaceData\IPostData.cs" />
+    <Compile Include="Services\InterfaceData\ICommentaire.cs" />
     <Compile Include="Services\InterfaceData\IUserData.cs" />
+    <Compile Include="Services\SqlData\CommentaireData.cs" />
     <Compile Include="Services\SqlData\UserData.cs" />
   </ItemGroup>
   <ItemGroup>

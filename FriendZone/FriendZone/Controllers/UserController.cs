@@ -11,10 +11,10 @@ using FriendZoneData.Services.SqlData;
 
 namespace FriendZone.Controllers
 {
-    
+
     public class UserController : ApiController
     {
-    
+
         static IUserData source;
 
         public UserController()
@@ -23,7 +23,6 @@ namespace FriendZone.Controllers
             source = new UserData();
         }
 
-
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
@@ -31,9 +30,56 @@ namespace FriendZone.Controllers
         }
 
         [HttpGet]
+        public User getUser(int id)
+        {
+            return source.Get(id);
+        }
+        
+
+        [HttpGet]
         public IEnumerable<Post> GetUserPost(int id)
         {
             return source.GetPostByUser(id);
         }
+
+        [HttpPost]
+        public Boolean CreateUser([FromBody] User user)
+        {
+            if (user != null)
+            {
+                source.Add(user);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        public Boolean UpdateUser([FromBody] User user)
+        {
+            if (user != null)
+            {
+                source.Update(user);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        public Boolean DeleteUser(int id)
+        {
+            return source.Delete(id);
+        }
+
+        [HttpGet] 
+           public int getNumberOfUsers()
+        {
+            return source.GetAll().ToList().Count();
+        }        
     }
 }

@@ -26,7 +26,7 @@ namespace FriendZoneData.Model
 
         [Column("caption")]
         public string Caption { get; set; }
-        
 
+        public virtual ICollection<Commentaire> PostCommentaires { get; set; }
     }
 }
