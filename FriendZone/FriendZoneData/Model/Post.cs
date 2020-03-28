@@ -18,8 +18,8 @@ namespace FriendZoneData.Model
         [Column("post_id")]
         public int postId { get; set; }
 
-        public int user_id { get; set; }
-        
+        [Column("user_id")]
+        public int userId { get; set; }
 
         [Column("post_url")]
         public string postUrl { get; set; }

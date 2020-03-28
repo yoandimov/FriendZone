@@ -39,7 +39,7 @@ namespace FriendZoneData.Services.SqlData
 
         public User Get(int id)
         {
-            return db.Users.FirstOrDefault(c => c.user_id == id);
+            return db.Users.FirstOrDefault(c => c.userId == id);
         }
 
         public List<User> GetAll()
@@ -49,7 +49,7 @@ namespace FriendZoneData.Services.SqlData
 
         public List<Post> GetPostByUser(int userId)
         {
-            return db.Users.FirstOrDefault(c => c.user_id == userId).UserPost.ToList();
+            return db.Users.FirstOrDefault(c => c.userId == userId).UserPost.ToList();
         }
 
         public bool Update(User u)

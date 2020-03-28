@@ -20,6 +20,5 @@ namespace FriendZoneData.Services.InterfaceData
 
         Post GetPostByUrl(string url);
 
-        
     }
 }
