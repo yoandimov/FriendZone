@@ -15,5 +15,6 @@ namespace FriendZoneData.Services
 
         public DbSet<Like> Likes { get; set; }
 
+  
     }
 }

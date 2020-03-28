@@ -23,7 +23,7 @@ namespace FriendZone.Controllers
 
 
         [HttpPost]
-        public void Create([FromUri] Post post)
+        public void Create([FromBody] Post post)
         {
             source.Add(post);
         }
@@ -57,7 +57,7 @@ namespace FriendZone.Controllers
             return source.GetAll().ToList();
         }
 
-        public Dictionary<String, int> GetTotalLikes(int id)
+        public IDictionary<string, int> GetTotalLikes(int id)
         {
             return new Dictionary<string, int>()
             {

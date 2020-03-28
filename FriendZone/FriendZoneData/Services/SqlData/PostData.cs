@@ -53,8 +53,9 @@ namespace FriendZoneData.Services.SqlData
 
         public int GetPostTotalLike(int id)
         {
-            return db.Likes.Where(l => l.PostId == id).Count();
+            return db.Likes.Where(l => l.postId == id).Count();
         }
+
 
         public bool Update(Post p)
         {

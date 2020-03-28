@@ -22,5 +22,6 @@ namespace FriendZoneData.Services.InterfaceData
         Post GetPostByUrl(string url);
 
         int GetPostTotalLike(int id);
+
     }
 }

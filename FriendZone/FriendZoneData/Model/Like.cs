@@ -8,15 +8,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FriendZoneData.Model
 {
-    class Like
+    [Table("like")]
+    public class Like
     {
+
         [Key]
         [Column("user_id", Order = 0)]
-
-        public int UserId { get; set; }
+        public int userId { get; set; }
 
         [Key]
         [Column("post_id", Order = 1)]
-        public int PostId { get; set; }
+        public int postId { get; set; }
     }
 }

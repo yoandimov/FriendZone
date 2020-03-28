@@ -26,7 +26,8 @@ namespace FriendZoneData.Model
 
         [Column("caption")]
         public string Caption { get; set; }
-        
+
+        public virtual ICollection<Like> Likes { get; set; }
 
     }
 }

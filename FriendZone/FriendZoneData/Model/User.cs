@@ -48,6 +48,7 @@ namespace FriendZoneData.Model
         public string Email { get; set; }
 
         public virtual ICollection<Post> UserPost { get; set; }
+   
 
     }
 }
