@@ -8,93 +8,10 @@
     @Styles.Render("~/Content/bootstrapcss")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/Site.css")
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px
-        }
-        #main-container {
-            width: 100%;
-            margin: 0px auto;
-        }
-        #header {
-            width: 100%;
-            background-color: #4267b2;
-            padding: 10px;
-            color: white;
-        }
-        #header:after {
-            content: ".";
-            display: block;
-            height: 0;
-            clear: both;
-            visibility: hidden;
-        }
-        #header section > #fb-icon {
-            margin-left: 140px;
-        }
-        #header section > img {
-            float: left;
-            margin-left: 10px;
-        }
-        #header section > input {
-            float: left;
-            margin-top: 0px;
-            margin-left: 10px;
-            margin-right: 400px;
-        }
-        #header nav {
-            width: 50%;
-            float: left;
-        }
-        #header nav ul {
-            list-style: none;
-        }
-        #header nav ul li {
-            float: left;
-            min-width: 10%;
-            padding: 4px;
-            margin-left: 10px;
-            background-color: #ffffcc;
-            text-align: center;
-            color: black;
-        }
-        #header nav ul li a,
-        a {
-            text-decoration: none;
-        }
-        input {
-            display: block;
-            margin-top: 10px;
-            min-width: 20%;
-            height: 6px;
-            padding: 10px;
-            border: solid 1px #BDC7D8;
-        }
-  
-        
-    </style>
-</head>
-<body>
-    <div id="main-container">
-        <header id="header">
-            <section> <img id="fb-icon" src="fb.png" width="30" /> </section>
-
-            <section>
-                <input type="text" id="search" placeholder="Search Friend" autocomplete="off" />
-            </section>
-
-            <section> <i class=" fa fa-user" ></i> </section>
-            <section> <img src="chat.png" width="30" /> </section>
-            <section> <img src="earth.png" width="30" /> </section>
-            <section> <img src="setting.png" style="margin-left:40px;" width="30" /> </section>
-
-        </header>
-    </div>
+  </head>
     @RenderBody()
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
 </body>
 </html>
