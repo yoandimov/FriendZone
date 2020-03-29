@@ -33,7 +33,9 @@ namespace FriendZoneData.Services.SqlData
                 return db.SaveChanges() >= 0;
             }
             else
+            {
                 return false;
+            }
         }
 
         public Post Get(int id)
@@ -51,10 +53,7 @@ namespace FriendZoneData.Services.SqlData
             return db.Posts.FirstOrDefault(c => c.PostUrl == url);
         }
 
-        public int GetPostTotalLike(int id)
-        {
-            return db.Likes.Where(l => l.postId == id).Count();
-        }
+
 
 
         public bool Update(Post p)

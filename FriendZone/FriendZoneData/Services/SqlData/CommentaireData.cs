@@ -48,7 +48,7 @@ namespace FriendZoneData.Services.SqlData
 
         public List<Commentaire> GetCommentairesByPost(int id)
         {
-            return db.Posts.FirstOrDefault(p => p.postId == id).PostCommentaires.ToList();
+            return db.Posts.FirstOrDefault(p => p.PostId == id).PostCommentaires.ToList();
         }
 
         public bool Update(Commentaire c)

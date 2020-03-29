@@ -14,10 +14,10 @@ namespace FriendZoneData.Model
 
         [Key]
         [Column("user_id", Order = 0)]
-        public int userId { get; set; }
+        public int UserId { get; set; }
 
         [Key]
         [Column("post_id", Order = 1)]
-        public int postId { get; set; }
+        public int PostId { get; set; }
     }
 }

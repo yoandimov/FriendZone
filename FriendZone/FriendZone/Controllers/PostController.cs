@@ -13,7 +13,7 @@ namespace FriendZone.Controllers
     public class PostController : ApiController
     {
         IPostData source;
-        const string POST_TOTAL_LIKE = "likes";
+       
         public PostController()
         {
             source = new PostData();
@@ -57,13 +57,7 @@ namespace FriendZone.Controllers
             return source.GetAll().ToList();
         }
 
-        public IDictionary<string, int> GetTotalLikes(int id)
-        {
-            return new Dictionary<string, int>()
-            {
-                {POST_TOTAL_LIKE, source.GetPostTotalLike(id)}
-            };
-        }
+       
 
     }
 }
