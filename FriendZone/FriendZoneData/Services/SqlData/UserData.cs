@@ -58,5 +58,10 @@ namespace FriendZoneData.Services.SqlData
             entry.State = System.Data.Entity.EntityState.Modified;
             return db.SaveChanges() >= 0;
         }
+
+        public User ValidateUser(string username, string password)
+        {
+            return db.Users.FirstOrDefault(u => u.Username.Equals(username) && u.Password.Equals(password));
+        }
     }
 }

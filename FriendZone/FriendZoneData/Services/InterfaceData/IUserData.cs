@@ -18,5 +18,7 @@ namespace FriendZoneData.Services.InterfaceData
         bool Delete(int id);
 
         List<Post> GetPostByUser(int userId);
+
+        User ValidateUser(string username, string password);
     }
 }

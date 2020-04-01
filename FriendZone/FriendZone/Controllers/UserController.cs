@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Contexts;
+using System.Security.Claims;
+using System.Web;
 using System.Web.Http;
+using FriendZone.Models;
 using FriendZoneData.Model;
 using FriendZoneData.Services.InterfaceData;
 
@@ -11,7 +15,7 @@ using FriendZoneData.Services.SqlData;
 
 namespace FriendZone.Controllers
 {
-
+    [Authorize]
     public class UserController : ApiController
     {
 
@@ -23,6 +27,7 @@ namespace FriendZone.Controllers
             source = new UserData();
         }
 
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
@@ -30,17 +35,34 @@ namespace FriendZone.Controllers
         }
 
         [HttpGet]
+        public User getUser()
+        {
+            return source.Get(AuthorizationServerProvider.getUserId());
+        }
+
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
+        [HttpGet]
         public User getUser(int id)
         {
             return source.Get(id);
         }
-        
 
+
+
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpGet]
         public IEnumerable<Post> GetUserPost(int id)
         {
             return source.GetPostByUser(id);
         }
+
+
+        [HttpGet]
+        public IEnumerable<Post> GetUserPost()
+        {
+            return source.GetPostByUser(AuthorizationServerProvider.getUserId());
+        }
+
 
         [HttpPost]
         public Boolean CreateUser([FromBody] User user)
@@ -56,6 +78,7 @@ namespace FriendZone.Controllers
             }
         }
 
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpPost]
         public Boolean UpdateUser([FromBody] User user)
         {
@@ -71,13 +94,39 @@ namespace FriendZone.Controllers
         }
 
         [HttpPost]
+        public Boolean UpdateProfile([FromBody] User user)
+        {
+            if(user.userId != AuthorizationServerProvider.getUserId())
+            {
+                return false;
+            }
+            if (user != null)
+            {
+                source.Update(user);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
+        [HttpPost]
         public Boolean DeleteUser(int id)
         {
             return source.Delete(id);
         }
 
+        [HttpPost]
+        public Boolean DeleteUser()
+        {
+            return source.Delete(AuthorizationServerProvider.getUserId());
+        }
+
+
         [HttpGet] 
-           public int getNumberOfUsers()
+        public int getNumberOfUsers()
         {
             return source.GetAll().ToList().Count();
         }        

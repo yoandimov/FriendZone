@@ -38,6 +38,25 @@ namespace FriendZoneData.Services.SqlData
             }
         }
 
+        public bool DeleteUserPost(int userId, int postId)
+        {
+            Post p = Get(postId);
+            if(userId != p.UserId)
+            {
+                return false;
+            }
+
+            if (p != null)
+            {
+                db.Posts.Remove(p);
+                return db.SaveChanges() >= 0;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public Post Get(int id)
         {
             return db.Posts.FirstOrDefault(c => c.PostId == id);
@@ -53,8 +72,10 @@ namespace FriendZoneData.Services.SqlData
             return db.Posts.FirstOrDefault(c => c.PostUrl == url);
         }
 
-
-
+        public int GetPostTotalCommentaire(int postId)
+        {
+            return db.Posts.FirstOrDefault(p => p.PostId == postId).PostCommentaires.Count();
+        }
 
         public bool Update(Post p)
         {

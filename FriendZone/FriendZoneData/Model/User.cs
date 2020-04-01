@@ -47,6 +47,8 @@ namespace FriendZoneData.Model
         [Column("email")]
         public string Email { get; set; }
 
+        [Column("permision")]
+        public string Permision { get; set; }
         public virtual ICollection<Post> UserPost { get; set; }
    
 

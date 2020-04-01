@@ -23,9 +23,28 @@ namespace FriendZoneData.Services.SqlData
             db.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public bool AdminDelete(int id)
         {
             Commentaire c = Get(id);
+            if (c != null)
+            {
+                db.Commentaires.Remove(c);
+                return db.SaveChanges() >= 0;
+            }
+            else
+                return false;
+
+        }
+
+        public bool Delete(int userId,int id)
+        {
+            Commentaire c = Get(id);
+
+            if(c.userId != userId)
+            {
+                return false;
+            }
+
             if (c != null)
             {
                 db.Commentaires.Remove(c);

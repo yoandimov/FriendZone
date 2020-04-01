@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using FriendZoneData.Model;
+using FriendZone.Models;
 
 namespace FriendZone.Controllers
 {
@@ -19,27 +20,45 @@ namespace FriendZone.Controllers
             source = new PostData();
         }
 
- 
-
-
         [HttpPost]
         public void Create([FromBody] Post post)
         {
             source.Add(post);
         }
-
+      
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpPost]
-        public  bool update([FromBody] Post post)
+        public  bool AdminUpdate([FromBody] Post post)
         {
             return source.Update(post);
         }
 
+        [HttpPost]
+        public bool update([FromBody] Post post)
+        {
+            if(post.UserId == AuthorizationServerProvider.getUserId())
+            {
+                return false;
+            }
+            return source.Update(post);
+        }
+
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpGet]
-        public bool Delete(int id)
+        public bool AdminDelete(int id)
         {
             return source.Delete(id);
 
         }
+
+        
+        [HttpGet]
+        public bool Delete(int id)
+        {
+            return source.DeleteUserPost(AuthorizationServerProvider.getUserId(),id);
+
+        }
+
 
         [HttpGet]
         public Post getPostByUrl(string url)

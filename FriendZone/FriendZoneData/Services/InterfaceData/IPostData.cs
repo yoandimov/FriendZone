@@ -19,7 +19,11 @@ namespace FriendZoneData.Services.InterfaceData
 
         bool Delete(int id);
 
+        bool DeleteUserPost(int userId, int postId);
+
         Post GetPostByUrl(string url);
+
+        int GetPostTotalCommentaire(int postId);
 
 
     }

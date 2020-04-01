@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using FriendZoneData.Services.SqlData;
 using FriendZoneData.Model;
+using FriendZone.Models;
 using FriendZoneData.Services.InterfaceData;
 
 namespace FriendZone.Controllers
@@ -43,9 +44,9 @@ namespace FriendZone.Controllers
         }
 
         [HttpGet]
-        public Boolean DeleteLike(int postId, int userId)
+        public Boolean DeleteLike(int postId)
         {
-            return source.Delete(postId, userId);
+            return source.Delete(postId, AuthorizationServerProvider.getUserId());
         }
 
     }

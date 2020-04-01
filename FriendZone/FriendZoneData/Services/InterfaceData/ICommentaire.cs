@@ -13,7 +13,8 @@ namespace FriendZoneData.Services.InterfaceData
         Commentaire Get(int id);
         void Add(Commentaire c);
         bool Update(Commentaire c);
-        bool Delete(int id);
+        bool AdminDelete(int id);
+        bool Delete(int userId, int id);
         List<Commentaire> GetCommentairesByPost(int id);
     }
 }

@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using FriendZone.Models;
 using FriendZoneData.Model;
 using FriendZoneData.Services;
 using FriendZoneData.Services.InterfaceData;
@@ -15,6 +16,7 @@ using FriendZoneData.Services.SqlData;
 
 namespace FriendZone.Controllers
 {
+    [Authorize]
     public class CommentaireController : ApiController
     {
         static ICommentaire source;
@@ -24,11 +26,13 @@ namespace FriendZone.Controllers
             source = new CommentaireData();
         }
 
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpGet]
         public IEnumerable<Commentaire> GetCommentaires()
         {
             return source.GetAll().ToList();
         }
+
 
         [HttpGet]
         public Commentaire getCommentaire(int id)
@@ -39,7 +43,7 @@ namespace FriendZone.Controllers
         [HttpPost]
         public Boolean CreateCommentaire([FromBody] Commentaire commentaire)
         {
-            if (commentaire != null)
+            if (commentaire != null && commentaire.userId == AuthorizationServerProvider.getUserId())
             {
                 source.Add(commentaire);
                 return true;
@@ -50,8 +54,9 @@ namespace FriendZone.Controllers
             }
         }
 
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpPost]
-        public Boolean UpdateCommentaire([FromBody] Commentaire commentaire)
+        public Boolean AdminUpdateCommentaire([FromBody] Commentaire commentaire)
         {
             if (commentaire != null)
             {
@@ -65,9 +70,31 @@ namespace FriendZone.Controllers
         }
 
         [HttpPost]
+        public Boolean UpdateCommentaire([FromBody] Commentaire commentaire)
+        {
+            if (commentaire != null && commentaire.userId == AuthorizationServerProvider.getUserId())
+            {
+                source.Update(commentaire);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
+        [HttpPost]
+        public Boolean AdminDeleteCommentaire(int id)
+        {
+            return source.AdminDelete(id);
+        }
+
+
+        [HttpPost]
         public Boolean DeleteCommentaire(int id)
         {
-            return source.Delete(id);
+            return source.Delete(AuthorizationServerProvider.getUserId(),id);
         }
 
         [HttpGet]
