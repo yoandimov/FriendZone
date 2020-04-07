@@ -79,18 +79,18 @@ namespace FriendZoneWeb.Models
         /// <param name="postObject">The object to be created</param>
         /// <param name="cancellationToken"></param>
         /// <returns>The item created</returns>
-        public async Task<T> PostRequest(string apiUrl, T postObject, CancellationToken cancellationToken)
+        public async Task<T> PostRequest(string apiUrl, object postObject)
         {
             T result = default(T);
             var json = new StringContent(JsonConvert.SerializeObject(postObject), System.Text.Encoding.UTF8, "application/json");
             json.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await Client.PostAsync(apiUrl, json, cancellationToken).ConfigureAwait(false);
+            var response = await Client.PostAsync(apiUrl, json).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 await response.Content.ReadAsStringAsync().ContinueWith((Task<string> x) =>
                 {
                     result = JsonConvert.DeserializeObject<T>(x.Result);
-                }, cancellationToken);
+                });
             }
             else
             {
