@@ -17,10 +17,10 @@ namespace FriendZoneData.Services.SqlData
             db = new FriendZoneDBContext();
         }
 
-        public void Add(User u)
+        public bool Add(User u)
         {
             db.Users.Add(u);
-            db.SaveChanges();
+            return db.SaveChanges() > 0;
         }
 
         public bool Delete(int id)
@@ -49,7 +49,7 @@ namespace FriendZoneData.Services.SqlData
 
         public List<Post> GetPostByUser(int userId)
         {
-            return db.Users.FirstOrDefault(c => c.userId == userId).UserPost.ToList();
+            return db.Users.FirstOrDefault(c => c.userId == userId).userPost.ToList();
         }
 
         public bool Update(User u)
@@ -61,7 +61,7 @@ namespace FriendZoneData.Services.SqlData
 
         public User ValidateUser(string username, string password)
         {
-            return db.Users.FirstOrDefault(u => u.Username.Equals(username) && u.Password.Equals(password));
+            return db.Users.FirstOrDefault(u => u.username.Equals(username) && u.password.Equals(password));
         }
     }
 }

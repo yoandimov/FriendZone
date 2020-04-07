@@ -12,7 +12,7 @@ namespace FriendZoneData.Services.InterfaceData
         List<User> GetAll();
         User Get(int id);
 
-        void Add(User u);
+        bool Add(User u);
         bool Update(User u);
 
         bool Delete(int id);

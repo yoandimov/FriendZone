@@ -18,38 +18,38 @@ namespace FriendZoneData.Model
         public int userId { get; set; }
 
         [Column("first_name")]
-        public String LirstName { get; set; }
+        public String firstName { get; set; }
 
         [Column("last_name")]
-        public String LastName { get; set; }
+        public String lastName { get; set; }
 
         [Column("city")]
-        public String City { get; set; }
+        public String city { get; set; }
 
         [Column("gender")]
-        public string Gender { get; set; }
+        public string gender { get; set; }
 
         [Column("country")]
-        public string Country { get; set; }
+        public string country { get; set; }
 
         [Column("description")]
-        public string Description { get; set; }
+        public string description { get; set; }
 
         [Column("profile_image")]
-        public string ProfileImage { get; set; }
+        public string profileImage { get; set; }
 
         [Column("Username")]
-        public string Username { get; set; }
+        public string username { get; set; }
 
         [Column("password")]
-        public string Password { get; set; }
+        public string password { get; set; }
 
         [Column("email")]
-        public string Email { get; set; }
+        public string email { get; set; }
 
         [Column("permision")]
-        public string Permision { get; set; }
-        public virtual ICollection<Post> UserPost { get; set; }
+        public string permision { get; set; }
+        public virtual ICollection<Post> userPost { get; set; }
    
 
     }

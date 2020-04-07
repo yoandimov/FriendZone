@@ -31,9 +31,9 @@ namespace FriendZone.Models
                 return;
             }
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim(ClaimTypes.Role, user.Permision));
-            identity.AddClaim(new Claim(ClaimTypes.Name, user.Username));
-            identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
+            identity.AddClaim(new Claim(ClaimTypes.Role, user.permision));
+            identity.AddClaim(new Claim(ClaimTypes.Name, user.username));
+            identity.AddClaim(new Claim(ClaimTypes.Email, user.email));
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.userId.ToString()));
             context.Validated(identity);
 
