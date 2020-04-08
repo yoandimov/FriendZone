@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace FriendZoneWeb.Models
 {
-    public class HttpClientHandler<T> : IHttpClientHandler<T>
+    public class HttpClientHandler<String> : IHttpClientHandler
     {
         private static readonly HttpClient Client = new HttpClient();
         /// <summary>
@@ -20,19 +20,17 @@ namespace FriendZoneWeb.Models
         ///     api get method, e.g. "products/1" to get a product with an id of 1</param>
         /// <param name="cancellationToken"></param>
         /// <returns>The item requested</returns>
-        public async Task<T> GetSingleItemRequest(string apiUrl, CancellationToken cancellationToken)
+        public async Task<string> GetSingleItemRequest(string apiUrl, CancellationToken cancellationToken)
         {
-            var result = default(T);
+            var result = default(string);
             var response = await Client.GetAsync(apiUrl, cancellationToken).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 await response.Content.ReadAsStringAsync().ContinueWith(x =>
                 {
-                    if (typeof(T).Namespace != "System")
-                    {
-                        result = JsonConvert.DeserializeObject<T>(x?.Result);
-                    }
-                    else result = (T)Convert.ChangeType(x?.Result, typeof(T));
+            
+                        result = x.Result;
+                    
                 }, cancellationToken);
             }
             else
@@ -51,15 +49,15 @@ namespace FriendZoneWeb.Models
         ///     api get method, e.g. "products?page=1" to get page 1 of the products</param>
         /// <param name="cancellationToken"></param>
         /// <returns>The items requested</returns>
-        public async Task<T[]> GetAllRequest(string apiUrl)
+        public async Task<string> GetAllRequest(string apiUrl)
         {
-            T[] result = null;
+            string result = null;
             var response = await Client.GetAsync(apiUrl).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 await response.Content.ReadAsStringAsync().ContinueWith((Task<string> x) =>
                 {
-                    result = JsonConvert.DeserializeObject<T[]>(x.Result);
+                    result = x.Result;
                 });
             }
             else
@@ -79,17 +77,17 @@ namespace FriendZoneWeb.Models
         /// <param name="postObject">The object to be created</param>
         /// <param name="cancellationToken"></param>
         /// <returns>The item created</returns>
-        public async Task<T> PostRequest(string apiUrl, object postObject)
+        public async Task<string> PostRequest(string apiUrl, string postObject)
         {
-            T result = default(T);
-            var json = new StringContent(JsonConvert.SerializeObject(postObject), System.Text.Encoding.UTF8, "application/json");
+            string result = default(string);
+            var json = new StringContent(postObject, System.Text.Encoding.UTF8, "application/json");
             json.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await Client.PostAsync(apiUrl, json).ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 await response.Content.ReadAsStringAsync().ContinueWith((Task<string> x) =>
                 {
-                    result = JsonConvert.DeserializeObject<T>(x.Result);
+                    result =x.Result;
                 });
             }
             else
@@ -108,7 +106,7 @@ namespace FriendZoneWeb.Models
         ///     api put method, e.g. "products/3" to update product with id of 3</param>
         /// <param name="putObject">The object to be edited</param>
         /// <param name="cancellationToken"></param>
-        public async Task PutRequest(string apiUrl, T putObject, CancellationToken cancellationToken)
+        public async Task PutRequest(string apiUrl, String putObject, CancellationToken cancellationToken)
         {
             var json = new StringContent(JsonConvert.SerializeObject(putObject), System.Text.Encoding.UTF8, "application/json");
             json.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -136,6 +134,18 @@ namespace FriendZoneWeb.Models
                 response.Content?.Dispose();
                 throw new HttpRequestException($"{response.StatusCode}:{content}");
             }
+        }
+
+        Task<string> IHttpClientHandler.GetAllRequest(string apiUrl)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        public Task PutRequest(string apiUrl, string putObject, CancellationToken token = default)
+        {
+            throw new NotImplementedException();
         }
     }
 

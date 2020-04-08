@@ -8,6 +8,7 @@ using FriendZoneData.Model;
 using System.Web.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FriendZoneWeb.Controllers
 {
@@ -15,12 +16,16 @@ namespace FriendZoneWeb.Controllers
     {
         readonly string apiBaseUrl = ConfigurationManager.AppSettings["ApiBaseUrl"];
         readonly HttpClientHandler<Login> h;
+
+        public AuthController()
+        {
+            h = new HttpClientHandler<Login>();
+        }
         public ActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(string username, string password)
         {
             const string GRANT_TYPE_KEY = "grant_type";
@@ -38,8 +43,10 @@ namespace FriendZoneWeb.Controllers
             try
             {
                
-               string url = $"{apiBaseUrl}api/getToken";
-               Login login = await h.PostRequest(url, loginParams);
+               string url = $"{apiBaseUrl}login/getToken";
+                string str = JsonConvert.SerializeObject(loginParams);
+                string ser = await h.PostRequest(url, str);
+                Login login = JsonConvert.DeserializeObject<Login>(ser);
                 return View();
             }
             catch (HttpRequestException e)

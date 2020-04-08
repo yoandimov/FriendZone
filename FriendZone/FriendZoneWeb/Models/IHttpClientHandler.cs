@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace FriendZoneWeb.Models
 {
-    public interface IHttpClientHandler<T>
+    public interface IHttpClientHandler
     {
-        Task<T> GetSingleItemRequest(string apiUrl, CancellationToken token = default(CancellationToken));
-        Task<T[]> GetAllRequest(string apiUrl);
-        Task<T> PostRequest(string apiUrl, object postObject);
-        Task PutRequest(string apiUrl, T putObject, CancellationToken token = default(CancellationToken));
+        Task<String> GetSingleItemRequest(string apiUrl, CancellationToken token = default(CancellationToken));
+        Task<String> GetAllRequest(string apiUrl);
+        Task<String> PostRequest(string apiUrl, string postObject);
+        Task PutRequest(string apiUrl, String putObject, CancellationToken token = default(CancellationToken));
         Task DeleteRequest(string apiUrl, CancellationToken token = default(CancellationToken));
     }
 }

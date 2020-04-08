@@ -8,9 +8,11 @@ using FriendZoneData.Model;
 using System.Web.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FriendZoneWeb.Controllers
 {
+    
     public class HomeController : Controller
     {
         //BaseApiUrl Pour faire le call
@@ -40,7 +42,8 @@ namespace FriendZoneWeb.Controllers
             try
             {
                 string url = $"{apiBaseUrl}user/getStudents";
-                IEnumerable<User> model = await h.GetAllRequest(url);
+                string str = await h.GetAllRequest(url);
+                IEnumerable<User> model = JsonConvert.DeserializeObject<IEnumerable<User>>(str);
                 return View(model);
             }
             catch (HttpRequestException e)

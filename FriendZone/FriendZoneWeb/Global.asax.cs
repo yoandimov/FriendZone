@@ -22,9 +22,10 @@ namespace FriendZoneWeb
         protected void Application_AuthenticateRequest(Object sender, EventArgs e)
         {
             const string LOGIN_PATH = "/auth/login";
+            const string lOGIN = "login";
             string urlR = HttpContext.Current.Request.RawUrl;
             string url = HttpContext.Current.Request.Path;
-            if (!LOGIN_PATH.Equals(url))
+            if (!url.EndsWith(lOGIN))
             {
                 Response.Redirect(LOGIN_PATH, true);
                 Response.End();
