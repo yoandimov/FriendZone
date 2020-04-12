@@ -21,17 +21,28 @@ namespace FriendZoneWeb
 
         protected void Application_AuthenticateRequest(Object sender, EventArgs e)
         {
+      
+            
+           
+        }
+
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
             const string LOGIN_PATH = "/auth/login";
             const string lOGIN = "login";
             string urlR = HttpContext.Current.Request.RawUrl;
             string url = HttpContext.Current.Request.Path;
             if (!url.EndsWith(lOGIN))
             {
-                Response.Redirect(LOGIN_PATH, true);
-                Response.End();
-                return;
+                if (this.Session["AccessToken"] == null)
+                {
+                    Response.Redirect(LOGIN_PATH, true);
+                    Response.End();
+                    return;
+                }
+                
             }
-           
+
         }
 
 

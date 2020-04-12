@@ -8,6 +8,7 @@ using FriendZoneData.Services.InterfaceData;
 using FriendZoneData.Services.SqlData;
 using FriendZoneData.Model;
 using System.Security.Claims;
+using Microsoft.Owin.Security;
 
 namespace FriendZone.Models
 {
@@ -35,7 +36,9 @@ namespace FriendZone.Models
             identity.AddClaim(new Claim(ClaimTypes.Name, user.username));
             identity.AddClaim(new Claim(ClaimTypes.Email, user.email));
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.userId.ToString()));
-            context.Validated(identity);
+            AuthenticationProperties properties = CreateProperties(user.permision);
+            AuthenticationTicket ticket = new AuthenticationTicket(identity, properties);
+            context.Validated(ticket);
 
 
         }
@@ -46,6 +49,25 @@ namespace FriendZone.Models
             return Int32.Parse(identity.Claims
                         .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
 
+        }
+
+        public static AuthenticationProperties CreateProperties(string Roles)
+        {
+            IDictionary<string, string> data = new Dictionary<string, string>
+        {
+            {"roles",Roles}
+        };
+            return new AuthenticationProperties(data);
+        }
+
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
+            {
+                context.AdditionalResponseParameters.Add(property.Key, property.Value);
+            }
+
+            return Task.FromResult<object>(null);
         }
     }
 }

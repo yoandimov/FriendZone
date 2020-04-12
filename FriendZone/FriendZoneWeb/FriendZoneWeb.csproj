@@ -144,8 +144,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\HttpClientHandler.cs" />
-    <Compile Include="Models\IHttpClientHandler.cs" />
+    <Compile Include="Models\ApiUrls.cs" />
+    <Compile Include="Models\HttpClientUtility.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
