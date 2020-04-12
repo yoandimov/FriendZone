@@ -31,5 +31,22 @@ namespace FriendZone.Controllers
             }
         
         }
+
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
+        [HttpPost]
+        public bool SignUpAdmin([FromBody] User user)
+        {
+            if (user == null)
+            {
+                return false;
+            }
+            else
+            {
+                user.permision = Roles.ADMIN_ROLE;
+                return source.Add(user);
+
+            }
+
+        }
     }
 }

@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Responsive vertical menu navigation</title>
+
+    <script src="~/Scripts/dashboard.js"></script>
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <i class="fa fa-tachometer"></i>
+            <span>Brand</span>
+        </div>
+        <a href="#" class="nav-trigger"><span></span></a>
+    </div>
+    <div class="side-nav">
+        <div class="logo">
+            <i class="fa fa-tachometer"></i>
+            <span>Brand</span>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="@Url.Action("registerAdmin", "Dashboard")">
+                        <span><i class="fa fa-user"></i></span>
+                        <span>Create Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+
+                        <span><i class="fa fa-envelope"></i></span>
+                        <span>Messages</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="#">
+                        <span><i class="fa fa-user"></i></span>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span><i class="fa fa-credit-card-alt"></i></span>
+                        <span>Payments</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        
+        @RenderBody()
+    </div>
+  
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/login.js"></script>
+
+
+</body>
+</html>
+

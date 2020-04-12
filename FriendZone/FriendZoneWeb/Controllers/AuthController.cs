@@ -39,7 +39,7 @@ namespace FriendZoneWeb.Controllers
                 if (ADMIN_ROLE == res.roles)
                 {
                     this.Session["AccessToken"] = res.access_token;
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("index", "dashboard");
                 } else
                 {
                     if(Models.Login.INVALID_GRANT == res.error)

@@ -8,5 +8,7 @@ namespace FriendZoneWeb.Models
     public class ApiUrls
     {
         public const string LOGIN_TOKEN_URL = "login/getToken";
+
+        public const string REGISTER_ADMIN_URL = "api/auth/SignUpAdmin";
     }
 }

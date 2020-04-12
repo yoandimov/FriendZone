@@ -26,6 +26,7 @@ namespace FriendZoneWeb.Models
         const string GRANT_TYPE_VALUE = "password";
         const string USERNAME_KEY = "username";
         const string PASSWORD_KEY = "password";
+        const string AUTHORIZATION_KEY = "authorization";
 
         public static Dictionary<string, string> getTokenRequestParams(string username, string password)
         {
@@ -36,6 +37,15 @@ namespace FriendZoneWeb.Models
                 {PASSWORD_KEY, password }
             };
             return loginParams;
+        }
+
+
+        public static Dictionary<string, string> AuthorizationHeader()
+        {
+            return new Dictionary<string, string>()
+            {
+                {AUTHORIZATION_KEY, "bearer " + HttpContext.Current.Session["AccessToken"].ToString()}
+            };
         }
 
 

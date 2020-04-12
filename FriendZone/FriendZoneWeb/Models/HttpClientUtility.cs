@@ -17,7 +17,7 @@ namespace FriendZoneWeb.Models
         private static readonly HttpClient _Client = new HttpClient();
         //private static JsonConverter = new JsonConverter();
 
-     
+     /*
         public static async Task<string> Run(string relativePath, string json)
         {
             string url = ConfigurationManager.AppSettings["ApiBaseUrl"] + relativePath;
@@ -30,25 +30,25 @@ namespace FriendZoneWeb.Models
             Console.ReadLine();
             return responseText;
         }
-
+        */
         public static string objectToJsonString(object arr)
         {
             return JsonConvert.SerializeObject(arr);
         }
 
-        public static async Task<string> Get(string relativePath)
+        public static async Task<string> Get(string relativePath, Dictionary<string, string> pHeaders = null)
         {
             string url = ConfigurationManager.AppSettings["ApiBaseUrl"] + relativePath;
-            var response = await Request(HttpMethod.Get, url);
+            var response = await Request(HttpMethod.Get, url, pHeaders: pHeaders);
             string responseText = await response.Content.ReadAsStringAsync();
             return responseText;
         }
 
 
-        public static async Task<string> Post(string relativePath, string json)
+        public static async Task<string> Post(string relativePath, string json, Dictionary<string, string> pHeaders = null)
         {
             string url = ConfigurationManager.AppSettings["ApiBaseUrl"] + relativePath;
-            var response = await Request(HttpMethod.Post, url,json);
+            var response = await Request(HttpMethod.Post, url, pHeaders, json);
             string responseText = await response.Content.ReadAsStringAsync();
             return responseText;
         }
@@ -77,7 +77,7 @@ namespace FriendZoneWeb.Models
         /// <param name="pJsonContent">String data to POST on the server</param>
         /// <param name="pHeaders">If you use some kind of Authorization you should use this</param>
         /// <returns></returns>
-        public static async Task<HttpResponseMessage> Request(HttpMethod pMethod, string pUrl, string pJsonContent = null, Dictionary<string, string> pHeaders = null)
+        public static async Task<HttpResponseMessage> Request(HttpMethod pMethod, string pUrl, Dictionary<string, string> pHeaders, string pJsonContent = null)
         {
             var httpRequestMessage = new HttpRequestMessage();
             httpRequestMessage.Method = pMethod;

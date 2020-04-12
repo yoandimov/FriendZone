@@ -14,6 +14,7 @@ namespace FriendZoneData.Model
     public class User
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("user_id")]
         public int userId { get; set; }
 
@@ -49,6 +50,7 @@ namespace FriendZoneData.Model
 
         [Column("permision")]
         public string permision { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Post> userPost { get; set; }
    
 
