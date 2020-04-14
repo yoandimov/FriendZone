@@ -39,6 +39,7 @@ namespace FriendZoneWeb.Controllers
                 if (ADMIN_ROLE == res.roles)
                 {
                     this.Session["AccessToken"] = res.access_token;
+                    this.Session.Timeout = 120;
                     return RedirectToAction("index", "dashboard");
                 } else
                 {

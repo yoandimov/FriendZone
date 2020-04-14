@@ -77,10 +77,10 @@ body {
 .side-nav {
 	position: absolute;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	background-color: #35475e;
 	z-index: 1;
-	display: none;
+
 }
 .side-nav.visible {
 	display: block;
@@ -123,8 +123,12 @@ body {
 	padding: 40px;
 	margin-top: 0;
 	padding: 0;
-	padding-top: 100px;
+	padding-right: 5px;
+	padding-top: 110px;
+	max-height: 100%;
 	height: 100%;
+
+
 
 }
 .main-content .title {

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<FriendZoneData.Model.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<script src="~/Scripts/alertify/alertify.js"></script>
+<script src="~/Scripts/alertify/alertify.min.js"></script>
+<link href="~/Content/alertify/alertify.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/alertify/alertify.core.css" rel="stylesheet" />
+<link href="~/Content/alertify/alertify.default.css" rel="stylesheet" />
+<p>
+    <a href="@Url.Action("Create", "Post")" class="btn btn-danger">Create</a>
+</p>
+<script>
+    $(document).ready(function () {
+
+        var table  = $('.table').DataTable();
+        $(".table").on("click", ".delete-button", function () {
+            var el = $(this);
+            var id = $(this).attr("post-id")
+            $.get("/post/delete/" + id).then(function (response) {
+                console.log(response)
+                  if (response.response == "true") {
+                      alertify.success("post deleted", 1000);
+                      table.row($(el).closest("tr")).remove().draw(false);
+                  }
+                  else {
+                      alertify.error("operation failed but did load", 1000)
+                  }
+              }).fail(function () {
+                  alertify.error("operation simply failed", 1000)
+              })
+        })
+    });
+
+
+
+
+</script>
+<table class="table cell-border">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Caption)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Caption)
+            </td>
+            <td class="" style="width:100px">
+                <button class=" btn btn-danger" style="margin-right: 10px; "><i class="fa fa-edit fa-lg"></i></button>
+                <button class="btn btn-danger delete-button pull-right" post-id="@item.PostId" style=""><i class="fa fa-trash fa-lg" style=""></i></button>
+            </td>
+        </tr>
+    }
+
+</table>
