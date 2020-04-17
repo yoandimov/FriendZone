@@ -95,7 +95,7 @@ namespace FriendZoneWeb.Models
                     HttpContent httpContent = new FormUrlEncodedContent(
                         JsonConverterClass<Dictionary<string,string>>.JsonToObject(pJsonContent)
                         );
-                    httpRequestMessage.Content = httpContent;
+                     .Content = httpContent;
                     break;
          
 

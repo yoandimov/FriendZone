@@ -24,8 +24,8 @@ namespace FriendZoneData.Model
         [Column("post_url")]
         public string PostUrl { get; set; }
 
-        [Column("caption")]
-        public string Caption { get; set; }
+        [Column("title")]
+        public string Title {get;set; }
 
         [Column("date_created")]
         public DateTime DateCreated { get; set; }

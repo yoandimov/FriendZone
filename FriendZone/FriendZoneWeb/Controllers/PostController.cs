@@ -12,7 +12,7 @@ namespace FriendZoneWeb.Controllers
     public class PostController : Controller
     {
         // GET: Post
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult>  ()
         {
             var response = await HttpClientUtility.Get(ApiUrls.ALL_POSTS_URL);
             List<Post> model = HttpClientUtility.JsonConverterClass<List<Post>>.JsonToObject(response);

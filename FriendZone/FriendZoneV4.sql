@@ -23,6 +23,7 @@ create table [dbo].[post] (
 	[title] TEXT NOT NULL,
 	[image]   TEXT NULL,
 	[date_created] DATE NOT NULL DEFAULT GETDATE(),
+	[content] TEXT NULL,
 	PRIMARY KEY CLUSTERED ([post_id] ASC),
 	CONSTRAINT [FK_user_id_post] FOREIGN KEY ([user_id]) REFERENCES [dbo].[user] ([user_id])
 );
