@@ -27,6 +27,11 @@ namespace FriendZoneData.Model
         [Column("caption")]
         public string Caption { get; set; }
 
+        [Column("date_created")]
+        public DateTime DateCreated { get; set; }
+
+        [Column("image")]
+        public string Image { get; set; }
         public virtual ICollection<Commentaire> PostCommentaires { get; set; }
     }
 }
