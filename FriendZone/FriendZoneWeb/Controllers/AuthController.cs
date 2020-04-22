@@ -56,8 +56,7 @@ namespace FriendZoneWeb.Controllers
             }
             catch (HttpRequestException e)
             {
-                System.Diagnostics.Debug.WriteLine(e);
-                return View("Error", new HandleErrorInfo(e, "Home", "List"));
+                return View(model: Models.Login.UNKNOWN_ERROR);
             }
           
         }

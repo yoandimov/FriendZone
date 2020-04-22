@@ -21,8 +21,6 @@ namespace FriendZoneData.Services.InterfaceData
 
         bool DeleteUserPost(int userId, int postId);
 
-        Post GetPostByUrl(string url);
-
         int GetPostTotalCommentaire(int postId);
 
 

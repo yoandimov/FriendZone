@@ -46,7 +46,10 @@
                 @Html.DisplayNameFor(model => model.UserId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PostUrl)
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
@@ -58,21 +61,47 @@
     </thead>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td class="" style="width:100px">
-                <button class=" btn btn-danger" style="margin-right: 10px; "><i class="fa fa-edit fa-lg"></i></button>
-                <button class="btn btn-danger delete-button pull-right" post-id="@item.PostId" style=""><i class="fa fa-trash fa-lg" style=""></i></button>
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserId)
+    </td>
+    @if (item.Image != null)
+    {
+      
+          
+         String img64Url = string.Format("data:image/png;base64,{0}", item.Image); //imagetype can be e.g. gif, jpeg, png etc.
+       
+
+        <td>
+            <img src="@item.Image" width="100" height="100" />
+        </td>
+    }
+    else
+    {
+        <td>
+            -
+        </td>
+    }
+    @if (item.Content != null)
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+    }
+    else
+    {
+        <td>
+            -
+        </td>
+    }
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td class="" style="width:100px">
+        <button class=" btn btn-danger" style="margin-right: 10px; "><i class="fa fa-edit fa-lg"></i></button>
+        <button class="btn btn-danger delete-button pull-right" post-id="@item.PostId" style=""><i class="fa fa-trash fa-lg" style=""></i></button>
+    </td>
+</tr>
     }
 
 </table>

@@ -21,9 +21,6 @@ namespace FriendZoneData.Model
         [Column("user_id")]
         public int UserId { get; set; }
 
-        [Column("post_url")]
-        public string PostUrl { get; set; }
-
         [Column("title")]
         public string Title {get;set; }
 
@@ -32,6 +29,9 @@ namespace FriendZoneData.Model
 
         [Column("image")]
         public string Image { get; set; }
+
+        [Column("content")]
+        public string Content { get; set; }
         public virtual ICollection<Commentaire> PostCommentaires { get; set; }
     }
 }

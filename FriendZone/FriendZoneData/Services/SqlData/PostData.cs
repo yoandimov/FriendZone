@@ -67,10 +67,7 @@ namespace FriendZoneData.Services.SqlData
             return db.Posts;
         }
 
-        public Post GetPostByUrl(string url)
-        {
-            return db.Posts.FirstOrDefault(c => c.PostUrl == url);
-        }
+    
 
         public int GetPostTotalCommentaire(int postId)
         {

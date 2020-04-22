@@ -5,7 +5,26 @@
 }
 
 <h2>Create</h2>
+<script>
+    $(document).ready(function () {
+        $(document).on("change", "#fileImage", function () {
+            readURL(this)
+        })
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $('#previewImage')
+                    .attr('src', e.target.result)
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+</script>
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -23,18 +42,19 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PostUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PostUrl, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PostUrl, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+           <img width="250" height="250" id="previewImage" style="border-style: solid;"/>
+           <input type="file" id="fileImage" name="ImageFile" required />
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Caption, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Caption, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Caption, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
@@ -42,6 +62,13 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.PostId, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PostId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">

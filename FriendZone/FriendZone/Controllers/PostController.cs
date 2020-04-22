@@ -60,14 +60,6 @@ namespace FriendZone.Controllers
 
 
 
-
-
-        [HttpGet]
-        public Post getPostByUrl(string url)
-        {
-            return source.GetPostByUrl(url);
-        }
-
         public Post Get(int id)
         {
             return source.Get(id);
