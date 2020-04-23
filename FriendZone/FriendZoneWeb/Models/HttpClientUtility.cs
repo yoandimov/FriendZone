@@ -36,19 +36,19 @@ namespace FriendZoneWeb.Models
             return JsonConvert.SerializeObject(arr);
         }
 
-        public static async Task<string> Get(string relativePath, Dictionary<string, string> pHeaders = null)
+        public static async Task<string> Get(string relativePath, Dictionary<string, string> pHeaders = null, bool form = true)
         {
             string url = ConfigurationManager.AppSettings["ApiBaseUrl"] + relativePath;
-            var response = await Request(HttpMethod.Get, url, pHeaders: pHeaders);
+            var response = await Request(HttpMethod.Get, url, pHeaders: pHeaders,null,form);
             string responseText = await response.Content.ReadAsStringAsync();
             return responseText;
         }
 
 
-        public static async Task<string> Post(string relativePath, string json, Dictionary<string, string> pHeaders = null)
+        public static async Task<string> Post(string relativePath, string json, Dictionary<string, string> pHeaders = null, bool form = true)
         {
             string url = ConfigurationManager.AppSettings["ApiBaseUrl"] + relativePath;
-            var response = await Request(HttpMethod.Post, url, pHeaders, json);
+            var response = await Request(HttpMethod.Post, url, pHeaders, json, form);
             string responseText = await response.Content.ReadAsStringAsync();
             return responseText;
         }
@@ -77,9 +77,10 @@ namespace FriendZoneWeb.Models
         /// <param name="pJsonContent">String data to POST on the server</param>
         /// <param name="pHeaders">If you use some kind of Authorization you should use this</param>
         /// <returns></returns>
-        public static async Task<HttpResponseMessage> Request(HttpMethod pMethod, string pUrl, Dictionary<string, string> pHeaders, string pJsonContent = null)
+        public static async Task<HttpResponseMessage> Request(HttpMethod pMethod, string pUrl, Dictionary<string, string> pHeaders, string pJsonContent, bool form)
         {
             var httpRequestMessage = new HttpRequestMessage();
+            HttpContent httpContent;
             httpRequestMessage.Method = pMethod;
             httpRequestMessage.RequestUri = new Uri(pUrl);
             if (pHeaders != null)
@@ -92,9 +93,16 @@ namespace FriendZoneWeb.Models
             switch (pMethod.Method)
             {
                 case "POST":
-                    HttpContent httpContent = new FormUrlEncodedContent(
-                        JsonConverterClass<Dictionary<string,string>>.JsonToObject(pJsonContent)
-                        );
+                    if (form)
+                    {
+                        httpContent = new FormUrlEncodedContent(
+                            JsonConverterClass<Dictionary<string, string>>.JsonToObject(pJsonContent)
+                            );
+                    }
+                    else
+                    {
+                        httpContent = new StringContent(pJsonContent, Encoding.UTF8, "application/json");
+                    }
                      httpRequestMessage.Content = httpContent;
                     break;
          

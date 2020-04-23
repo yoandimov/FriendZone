@@ -20,12 +20,21 @@ namespace FriendZone.Controllers
             source = new PostData();
         }
 
+
         [HttpPost]
         public void Create([FromBody] Post post)
         {
+            post.UserId = AuthorizationServerProvider.getUserId();
             source.Add(post);
         }
-      
+
+        [Authorize(Roles = Roles.ADMIN_ROLE)]
+        [HttpPost]
+        public void AdminCreate([FromBody] Post post)
+        {
+            source.Add(post);
+        }
+
         [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpPost]
         public  bool AdminUpdate([FromBody] Post post)

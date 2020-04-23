@@ -24,14 +24,17 @@ namespace FriendZoneData.Model
         [Column("title")]
         public string Title {get;set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
         [Column("date_created")]
         public DateTime DateCreated { get; set; }
 
         [Column("image")]
-        public string Image { get; set; }
+        public string Image { get; set; } 
 
         [Column("content")]
         public string Content { get; set; }
         public virtual ICollection<Commentaire> PostCommentaires { get; set; }
+
     }
 }

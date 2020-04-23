@@ -2,6 +2,7 @@
 using FriendZoneWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -33,39 +34,64 @@ namespace FriendZoneWeb.Controllers
 
         // POST: Post/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(Post post)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var file = Request.Files["ImageFile"];
+                MemoryStream ms = new MemoryStream();
+               
+                file.InputStream.CopyTo(ms);
+                byte[] bytes = ms.ToArray();
+                string b64 = Convert.ToBase64String(bytes);
+                post.Image = b64;
+                string json = HttpClientUtility.JsonConverterClass<Post>.ObjectToJsonString(post);
+                string response = await HttpClientUtility.Post(ApiUrls.CREATE_POST_URL, json, Login.AuthorizationHeader(), false);
+                
+                return View();
             }
-            catch
+            catch(Exception e)
             {
+
                 return View();
             }
         }
 
         // GET: Post/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var response = await HttpClientUtility.Get($"{ApiUrls.GET_POST_URL}{id}");
+            Post model = HttpClientUtility.JsonConverterClass<Post>.JsonToObject(response);
+            return View(model);
         }
 
         // POST: Post/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, Post post)
         {
             try
             {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                var file = Request.Files["ImageFile"];
+                if (file != null)
+                {
+                    MemoryStream ms = new MemoryStream();
+
+                    file.InputStream.CopyTo(ms);
+                    byte[] bytes = ms.ToArray();
+                    string b64 = Convert.ToBase64String(bytes);
+                    post.Image = b64;
+                }
+
+                string json = HttpClientUtility.JsonConverterClass<Post>.ObjectToJsonString(post);
+                string response = await HttpClientUtility.Post(ApiUrls.EDIT_POST_URL, json, Login.AuthorizationHeader(), false);
+                // return RedirectToAction("Index");
+                return View(post);
             }
             catch
             {
-                return View();
+                return View(post);
             }
         }
 

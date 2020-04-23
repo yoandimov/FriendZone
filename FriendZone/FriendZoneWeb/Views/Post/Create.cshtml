@@ -25,7 +25,7 @@
     }
     
 </script>
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype="multipart/form-data"})) 
 {
     @Html.AntiForgeryToken()
     
@@ -45,8 +45,8 @@
         @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-           <img width="250" height="250" id="previewImage" style="border-style: solid;"/>
-           <input type="file" id="fileImage" name="ImageFile" required />
+            <img width="250" height="250" id="previewImage" style="border-style: solid;" />
+            <input type="file" id="fileImage" name="ImageFile" />
         </div>
     </div>
 
@@ -69,6 +69,13 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
