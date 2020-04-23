@@ -102,8 +102,9 @@ namespace FriendZone.Controllers
             }
             if (user != null)
             {
-                source.Update(user);
-                return true;
+                user.permision = Roles.USER_ROLE;
+               
+                return source.Update(user);
             }
             else
             {
