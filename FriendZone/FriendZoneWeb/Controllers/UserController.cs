@@ -72,14 +72,14 @@ namespace FriendZoneWeb.Controllers
             }
         }
 
-        // GET: Post/Delete/5
+        // GET: USER/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
             string res = await HttpClientUtility.Get($"{ApiUrls.DELETE_USER_URL}{id}", Login.AuthorizationHeader());
             return RedirectToAction("Index");
         }
 
-        // POST: Post/Delete/5
+        // USER: USER/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -95,5 +95,11 @@ namespace FriendZoneWeb.Controllers
             }
         }
 
+        public async Task<ActionResult> Details(int id)
+        {
+            var response = await HttpClientUtility.Get($"{ApiUrls.GET_USER_URL}{id}", Login.AuthorizationHeader());
+            User model = HttpClientUtility.JsonConverterClass<User>.JsonToObject(response);
+            return View(model); ;
+        }
     }
 }

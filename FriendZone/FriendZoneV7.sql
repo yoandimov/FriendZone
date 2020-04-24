@@ -16,35 +16,35 @@ create table [dbo].[user] (
 	PRIMARY KEY CLUSTERED ([user_id] ASC)
 );
 
-create table [dbo].[post] (
-	[post_id] INT  IDENTITY (1, 1) NOT NULL,
-	[user_id] INT NOT NULL,
-	[title] TEXT NOT NULL,
-	[image]   TEXT NULL,
-	[date_created] DATE NOT NULL DEFAULT GETDATE(),
-	[content] TEXT NULL,
-	PRIMARY KEY CLUSTERED ([post_id] ASC),
-	CONSTRAINT [FK_user_id_post] FOREIGN KEY ([user_id]) REFERENCES [dbo].[user] ([user_id])
+CREATE TABLE [dbo].[post] (
+    [post_id]      INT  IDENTITY (1, 1) NOT NULL,
+    [user_id]      INT  NOT NULL,
+    [title]        TEXT NOT NULL,
+    [image]        TEXT NULL,
+    [date_created] DATE DEFAULT (getdate()) NOT NULL,
+    [content]      TEXT NULL,
+    PRIMARY KEY CLUSTERED ([post_id] ASC),
+    CONSTRAINT [FK_user_id_post] FOREIGN KEY ([user_id]) REFERENCES [dbo].[user] ([user_id]) 
 );
 
-create table [dbo].[commentaire] (
-	[post_id] INT NOT NULL,
-	[user_id] INT NOT NULL,
-	[commentaire_id] INT IDENTITY (1, 1) NOT NULL,
-	[tagged_user_id] INT,
-	[message] VARCHAR(50) NOT NULL,
-	[date_created] DATE NOT NULL,
-	PRIMARY KEY CLUSTERED ([commentaire_id] ASC),
-	CONSTRAINT [FK_user_id_commentaire] FOREIGN KEY ([user_id]) REFERENCES [dbo].[user] ([user_id]) ,
-	CONSTRAINT [FK_post_id_commentaire] FOREIGN KEY ([post_id]) REFERENCES [dbo].[post] ([post_id])
+CREATE TABLE [dbo].[commentaire] (
+    [post_id]        INT          NOT NULL,
+    [user_id]        INT          NOT NULL,
+    [commentaire_id] INT          IDENTITY (1, 1) NOT NULL,
+    [tagged_user_id] INT          NULL,
+    [message]        VARCHAR (50) NOT NULL,
+    [date_created]   DATE         NOT NULL,
+    PRIMARY KEY CLUSTERED ([commentaire_id] ASC),
+    CONSTRAINT [FK_post_id_commentaire] FOREIGN KEY ([post_id]) REFERENCES [dbo].[post] ([post_id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_user_id_commentaire] FOREIGN KEY ([user_id]) REFERENCES [dbo].[user] ([user_id]) ON DELETE CASCADE
 );
 
-create table [dbo].[like] (
-	[user_id] INT NOT NULL,
-	[post_id] INT NOT NULL,
-	primary key (user_id, post_id),
-	CONSTRAINT [FK_user_id_like] FOREIGN KEY ([user_id]) REFERENCES [dbo].[user] ([user_id]),
-	CONSTRAINT [FK_post_id_like] FOREIGN KEY ([post_id]) REFERENCES [dbo].[post] ([post_id])
+CREATE TABLE [dbo].[like] (
+    [user_id] INT NOT NULL,
+    [post_id] INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([user_id] ASC, [post_id] ASC),
+    CONSTRAINT [FK_post_id_like] FOREIGN KEY ([post_id]) REFERENCES [dbo].[post] ([post_id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_user_id_like] FOREIGN KEY ([user_id]) REFERENCES [dbo].[user] ([user_id]) ON DELETE CASCADE
 );
 
 
