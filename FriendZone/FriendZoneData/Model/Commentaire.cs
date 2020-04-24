@@ -28,7 +28,13 @@ namespace FriendZoneData.Model
         public string message { get; set; }
 
         [Column("date_created")]
-        public DateTime dateCreated { get; set; }
+        public string dateCreated { get; set; }
+
+        [Column("Username")]
+        public string username { get; set; }
+
+        [Column("profile_image")]
+        public string profileImage { get; set; }
 
     }
 }
