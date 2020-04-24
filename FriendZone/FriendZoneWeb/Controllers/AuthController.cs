@@ -20,6 +20,12 @@ namespace FriendZoneWeb.Controllers
         public AuthController()
         {
         }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return  RedirectToAction("Login");
+        }
         public ActionResult Login()
         {
             return View();
