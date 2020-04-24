@@ -64,10 +64,7 @@ namespace FriendZone.Controllers
         public bool Delete(int id)
         {
             return source.DeleteUserPost(AuthorizationServerProvider.getUserId(),id);
-
         }
-
-
 
         public Post Get(int id)
         {

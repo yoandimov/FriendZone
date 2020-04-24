@@ -23,7 +23,6 @@ namespace FriendZone.Controllers
 
         public UserController()
         {
-
             source = new UserData();
         }
 
@@ -33,13 +32,13 @@ namespace FriendZone.Controllers
         {
             return source.GetAll().ToList();
         }
-
+/*
         [HttpGet]
         public User getUser()
         {
             return source.Get(AuthorizationServerProvider.getUserId());
         }
-
+*/
         [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpGet]
         public User getUser(int id)
@@ -67,6 +66,7 @@ namespace FriendZone.Controllers
         [HttpPost]
         public Boolean CreateUser([FromBody] User user)
         {
+            /*
             if (user != null)
             {
                 source.Add(user);
@@ -75,7 +75,11 @@ namespace FriendZone.Controllers
             else
             {
                 return false;
-            }
+            }   
+            */
+
+            source.Add(user);
+            return true;
         }
 
         [Authorize(Roles = Roles.ADMIN_ROLE)]
@@ -113,7 +117,7 @@ namespace FriendZone.Controllers
         }
 
         [Authorize(Roles = Roles.ADMIN_ROLE)]
-        [HttpPost]
+        [HttpGet]
         public Boolean DeleteUser(int id)
         {
             return source.Delete(id);
