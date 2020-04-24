@@ -1,0 +1,107 @@
+﻿@model IEnumerable<FriendZoneData.Model.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<script src="~/Scripts/alertify/alertify.js"></script>
+<script src="~/Scripts/alertify/alertify.min.js"></script>
+<link href="~/Content/alertify/alertify.bootstrap.css" rel="stylesheet" />
+<link href="~/Content/alertify/alertify.core.css" rel="stylesheet" />
+<link href="~/Content/alertify/alertify.default.css" rel="stylesheet" />
+<p>
+    <a href="@Url.Action("Create", "Post")" class="btn btn-danger">Create</a>
+</p>
+<script>
+    $(document).ready(function () {
+
+        var table  = $('.table').DataTable();
+        $(".table").on("click", ".delete-button", function () {
+            var el = $(this);
+            var id = $(this).attr("post-id")
+            $.get("/post/delete/" + id).then(function (response) {
+                console.log(response)
+                  if (response.response == "true") {
+                      alertify.success("post deleted", 1000);
+                      table.row($(el).closest("tr")).remove().draw(false);
+                  }
+                  else {
+                      alertify.error("operation failed but did load", 1000)
+                  }
+              }).fail(function () {
+                  alertify.error("operation simply failed", 1000)
+              })
+        })
+    });
+
+
+
+
+</script>
+<table class="table cell-border">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.UserId)
+    </td>
+    @if (item.Image != null)
+    {
+      
+          
+         String img64Url = string.Format("data:image/png;base64,{0}", item.Image); //imagetype can be e.g. gif, jpeg, png etc.
+       
+
+        <td>
+            <img src="@img64Url" width="100" height="100" />
+        </td>
+    }
+    else
+    {
+        <td>
+            -
+        </td>
+    }
+    @if (item.Content != null)
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+    }
+    else
+    {
+        <td>
+            -
+        </td>
+    }
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+    <td class="" style="width:100px">
+        <a class=" btn btn-danger"  post-id="@item.PostId" href="post/edit/@item.PostId" id="editPost" style="margin-right: 10px; "><i class="fa fa-edit fa-lg"></i></a>
+        <button class="btn btn-danger delete-button pull-right" post-id="@item.PostId" style=""><i class="fa fa-trash fa-lg" style=""></i></button>
+    </td>
+</tr>
+    }
+
+</table>
