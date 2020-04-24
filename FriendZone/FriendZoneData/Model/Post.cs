@@ -24,10 +24,14 @@ namespace FriendZoneData.Model
         [Column("title")]
         public string Title {get;set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [DataType(DataType.Date)]
+        [Column("Username")]
+        public string username { get; set; }
+
+        [Column("profile_image")]
+        public string profileImage { get; set; }
+
         [Column("date_created")]
-        public DateTime DateCreated { get; set; }
+        public string DateCreated { get; set; }
 
         [Column("image")]
         public string Image { get; set; } 
