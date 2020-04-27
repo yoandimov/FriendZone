@@ -32,13 +32,14 @@ namespace FriendZone.Controllers
         {
             return source.GetAll().ToList();
         }
-/*
+
         [HttpGet]
         public User getUser()
         {
             return source.Get(AuthorizationServerProvider.getUserId());
         }
-*/
+
+
         [Authorize(Roles = Roles.ADMIN_ROLE)]
         [HttpGet]
         public User getUser(int id)

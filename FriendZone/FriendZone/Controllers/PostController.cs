@@ -14,10 +14,12 @@ namespace FriendZone.Controllers
     public class PostController : ApiController
     {
         IPostData source;
+        IUserData users;
        
         public PostController()
         {
             source = new PostData();
+            users = new UserData();
         }
 
 
@@ -73,7 +75,13 @@ namespace FriendZone.Controllers
 
         public IEnumerable<Post> GetAll()
         {
-            return source.GetAll().ToList();
+            List<Post> posts = source.GetAll().ToList();
+            foreach (var p in posts)
+            {
+                p.username = users.GetAll().ToList().Find(u => u.userId == p.UserId).username;
+                p.profileImage = users.GetAll().ToList().Find(u => u.userId == p.UserId).profileImage;
+            }
+            return posts;
         }
 
        
